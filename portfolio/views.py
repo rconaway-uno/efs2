@@ -156,7 +156,7 @@ def portfolio(request,pk):
    convert_format = '&format=1'
    convert_url = convert_base_url+convert_api_key+convert_currency+base_currency+convert_format
    rates = requests.get(convert_url).json()
-   eur_conv_rate = float(rates["quotes"]["USDEUR"])
+   eur_conv_rate = rates["quotes"]["USDEUR"]
    #****** Currency Layer Code **********************************
 
    # Loop through each stock and add the value to the total
