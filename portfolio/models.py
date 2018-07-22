@@ -74,9 +74,12 @@ class Stock(models.Model):
         main_api = 'https://www.alphavantage.co/query?function=BATCH_STOCK_QUOTES&symbols='
         api_key = '&apikey=2EDATRIUDF644K9U'
         url = main_api+symbol_f+api_key
-        json_data = requests.get(url).json()
-        open_price = float(json_data["Stock Quotes"][0]["2. price"])
-        share_value = open_price
+        try:
+           json_data = requests.get(url).json()
+           open_price = json_data["Stock Quotes"][0]["2. price"]
+           share_value = open_price
+        except:
+           share_value = 0
         return share_value
 
     def current_stock_value(self):
