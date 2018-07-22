@@ -154,7 +154,7 @@ def portfolio(request,pk):
    base_currency = '&source=USD'
    convert_currency = '&currencies=EUR'
    convert_format = '&format=1'
-   convert_url = convert_base_url + convert_api_key + convert_currency + base_currency + convert_format
+   convert_url = convert_base_url+convert_api_key+convert_currency+base_currency+convert_format
    rates = requests.get(convert_url).json()
    eur_conv_rate = float(rates["quotes"]["USDEUR"])
    #****** Currency Layer Code **********************************
